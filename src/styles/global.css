@@ -1,14 +1,9 @@
 @import 'tailwindcss';
 
-/* ==========================================================================
-   Design tokens — single source of truth, mapped into Tailwind's theme.
-   Anything defined here becomes a real utility class
-   (e.g. --color-primary  ->  bg-primary / text-primary / border-primary)
-   ========================================================================== */
+
 @theme {
-  /* Color palette — from Figma design */
-  --color-primary: #0E003F;       /* deep navy/indigo — headers, primary text, key actions */
-  --color-primary-tint: #E6F2FF;  /* light blue tint — subtle backgrounds, hover states */
+  --color-primary: #0E003F;     
+  --color-primary-tint: #E6F2FF;  
   --color-surface: #FFFFFF;
   --color-neutral: #777777;
   --color-bg: #FCFCFC;
@@ -24,43 +19,52 @@
   --container-content: 1200px;
 }
 
-/* ==========================================================================
-   Base element resets
-   ========================================================================== */
-html,
-body {
-  margin: 0;
-  padding: 0;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--font-family-sans);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  input, select, textarea {
+    font-family: inherit;
+    font-size: 1rem;
+  }
 }
 
-body {
-  font-family: var(--font-family-sans);
-  background-color: var(--color-bg);
-  color: var(--color-primary);
-  -webkit-font-smoothing: antialiased;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: 600;
-}
-
-p {
-  margin: 0;
-}
-
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-/* Footer links sit on the dark primary bg — override the global `a` reset */
 .footer-link {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
@@ -70,17 +74,6 @@ a {
   text-decoration: underline;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-input, select, textarea {
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-/* Accessibility: visible keyboard focus, always */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -100,9 +93,6 @@ textarea:focus-visible,
   }
 }
 
-/* ==========================================================================
-   Reusable patterns that are awkward to express as inline utility soup
-   ========================================================================== */
 .page-container {
   width: 100%;
   max-width: var(--container-content);

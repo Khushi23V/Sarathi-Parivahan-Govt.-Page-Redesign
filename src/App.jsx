@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import ApplicationFlowLayout from './pages/ApplicationFlowLayout';
 import ApplicationStepPage from './pages/ApplicationStepPage';
+import LearnersLicenceInstructionsPage from './pages/application/LearnersLicenceInstructionsPage';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/apply/:flowType" element={<ApplicationFlowLayout />}>
+            <Route path="step-1" element={<LearnersLicenceInstructionsPage />} />
             <Route path=":step" element={<ApplicationStepPage />} />
           </Route>
         </Routes>
